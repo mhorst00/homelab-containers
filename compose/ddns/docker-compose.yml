@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  ddns-v4:
+    image: oznu/cloudflare-ddns:latest
+    container_name: ddns-v4
+    restart: always
+    environment:
+      - RRTYPE=A
+      - API_KEY=${CF_API_KEY}
+      - ZONE=${ZONE}
+      - PROXIED=${PROXIED}
+
+  ddns-v6:
+    image: oznu/cloudflare-ddns:latest
+    container_name: ddns-v6
+    restart: always
+    environment:
+      - RRTYPE=AAAA
+      - API_KEY=${CF_API_KEY}
+      - ZONE=${ZONE}
+      - PROXIED=${PROXIED}
