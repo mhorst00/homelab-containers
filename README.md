@@ -8,10 +8,12 @@ Note: For Fedora Server
 
 1. Setup podman
 
-2. Allow ports below 1000 for user-services
+2. Add default timezone to containers.conf
 
-3. Mount storage
+3. Allow ports below 1000 for user-services
 
-4. Setup Portainer
+4. Mount storage
 
-5. Integrate this repo into Docker stacks
+5. Setup Portainer
+
+6. Integrate this repo into Docker stacks
