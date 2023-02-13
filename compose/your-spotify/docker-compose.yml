@@ -1,0 +1,29 @@
+version: "3"
+
+volumes:
+  db:
+
+services:
+  server:
+    image: yooooomi/your_spotify_server
+    restart: always
+    depends_on:
+      - mongo
+    environment:
+      API_ENDPOINT: http://localhost:8080
+      CLIENT_ENDPOINT: http://localhost:3000
+      SPOTIFY_PUBLIC: ${SPOTIFY_PUBLIC}
+      SPOTIFY_SECRET: ${SPOTIFY_SECRET}
+  mongo:
+    container_name: mongo
+    image: mongo:4.4.8
+    volumes:
+      - db:/data/db
+
+  web:
+    image: yooooomi/your_spotify_client
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      API_ENDPOINT: http://localhost:8080
